@@ -16,7 +16,8 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://solid-space-engine-4jwjr9vwxr6r3qrgx-3000.app.github.dev",
+        "https://darukaa-proj-link.vercel.app",
+        "https://darukaa-proj-darkmode.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
