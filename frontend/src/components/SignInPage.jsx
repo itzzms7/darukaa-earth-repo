@@ -3,7 +3,7 @@ import { Mail, Lock, LogIn, AlertCircle } from 'lucide-react';
 import { api } from '../api/client.js';
 
 export default function SignInPage({ onSuccess, onNavigateToSignUp }) {
-  const [email, setEmail] = useState('iamxuhail@gmail.com');
+  const [email, setEmail] = useState('user@org.com');
   const [password, setPassword] = useState('••••••••');
   const [rememberMe, setRememberMe] = useState(true);
   const [loading, setLoading] = useState(false);
