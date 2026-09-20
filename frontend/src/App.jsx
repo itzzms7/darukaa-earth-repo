@@ -9,7 +9,8 @@ import SignUpPage from './components/SignUpPage.jsx';
 import { api } from './api/client.js';
 
 export default function App() {
-  const [activeView, setActiveView] = useState('dashboard'); // 'dashboard' | 'site_detail' | 'profile' | 'signin' | 'signup'
+  //const [activeView, setActiveView] = useState('dashboard'); // 'dashboard' | 'site_detail' | 'profile' | 'signin' | 'signup'
+  const [activeView, setActiveView] = useState( api.getCurrentUser() ? 'dashboard' : 'signin' );
   const [activeProject, setActiveProject] = useState(null);
   const [activeSite, setActiveSite] = useState(null);
   const [currentUser, setCurrentUser] = useState(() => api.getCurrentUser());
