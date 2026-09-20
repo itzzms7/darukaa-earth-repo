@@ -19,7 +19,6 @@ elif database_url.startswith("postgresql://"):
         1,
     )
 
-
 engine = create_engine(
     database_url,
     pool_pre_ping=True,
