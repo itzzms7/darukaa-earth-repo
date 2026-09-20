@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #E6EAF8;
+    color: #231C20;
+    min-height: 100vh;
+  }
+}
