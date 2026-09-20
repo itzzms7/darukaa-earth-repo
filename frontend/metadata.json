@@ -1,0 +1,6 @@
+{
+  "name": "Darukaa Earth",
+  "description": "Enterprise earth intelligence and geospatial analytics platform with interactive polygon mapping, project organization, and environmental metric monitoring.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,292 @@
+@import "tailwindcss";
+
+:root {
+  /* Canvas & Base Layers */
+  --stitch-dark-bg: #0F1117;          /* Deep background canvas */
+  --stitch-dark-surface: #181A20;      /* Primary card / container surface */
+  --stitch-dark-elevated: #1E2028;     /* Floating modals, dropdowns, tooltips */
+  
+  /* Borders & Dividers */
+  --stitch-dark-border: #2D3139;       /* Standard structural border */
+  --stitch-dark-border-subtle: #22252C; /* Inner card separation line */
+
+  /* Text Hierarchy */
+  --stitch-dark-text-main: #F3F4F6;    /* High-contrast headers & primary labels */
+  --stitch-dark-text-muted: #9CA3AF;   /* Secondary text, metadata, descriptions */
+  --stitch-dark-text-faint: #6B7280;   /* Disabled states, placeholder text */
+
+  /* Accents & Glows (AI Vibe) */
+  --stitch-dark-primary: #3B82F6;      /* Core action blue */
+  --stitch-dark-primary-glow: rgba(59, 130, 246, 0.15); /* Ambient focus ring / pill background */
+  --stitch-dark-accent-purple: #8B5CF6; /* Secondary AI generation / thinking indicator */
+}
+
+@layer base {
+  html {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* Completely disable/hide browser scrollbars */
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+  }
+
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+}
+
+/* Soft Moving Subtle Gradient of Blue, Soft White Glow, Subtle Gold Glow and Black Mix Canvas */
+@keyframes movingMeshGradient {
+  0% {
+    background-position: 0% 0%, 100% 0%, 50% 100%, 0% 100%, 80% 50%, 0% 0%;
+  }
+  25% {
+    background-position: 30% 20%, 70% 30%, 40% 80%, 20% 90%, 40% 30%, 0% 0%;
+  }
+  50% {
+    background-position: 70% 40%, 30% 60%, 80% 40%, 60% 60%, 20% 70%, 0% 0%;
+  }
+  75% {
+    background-position: 40% 70%, 80% 20%, 30% 90%, 70% 30%, 60% 40%, 0% 0%;
+  }
+  100% {
+    background-position: 0% 0%, 100% 0%, 50% 100%, 0% 100%, 80% 50%, 0% 0%;
+  }
+}
+
+@keyframes floatOrbBlue {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.55;
+  }
+  33% {
+    transform: translate(70px, -50px) scale(1.15);
+    opacity: 0.7;
+  }
+  66% {
+    transform: translate(-50px, 40px) scale(0.92);
+    opacity: 0.48;
+  }
+}
+
+@keyframes floatOrbGold {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.35;
+  }
+  33% {
+    transform: translate(-60px, 45px) scale(1.18);
+    opacity: 0.55;
+  }
+  66% {
+    transform: translate(55px, -35px) scale(0.88);
+    opacity: 0.28;
+  }
+}
+
+@keyframes floatOrbWhite {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.28;
+  }
+  50% {
+    transform: translate(35px, 35px) scale(1.22);
+    opacity: 0.48;
+  }
+}
+
+.site-abstract-gradient-bg {
+  background-color: #050609;
+  background-image: 
+    radial-gradient(at 15% 15%, rgba(37, 99, 235, 0.42) 0px, transparent 48%),
+    radial-gradient(at 85% 18%, rgba(217, 119, 6, 0.24) 0px, transparent 44%),
+    radial-gradient(at 50% 50%, rgba(255, 255, 255, 0.16) 0px, transparent 38%),
+    radial-gradient(at 82% 85%, rgba(2, 132, 199, 0.38) 0px, transparent 46%),
+    radial-gradient(at 18% 82%, rgba(245, 158, 11, 0.18) 0px, transparent 40%),
+    linear-gradient(140deg, #050609 0%, #0A0D15 35%, #06070B 70%, #030406 100%);
+  background-size: 200% 200%, 190% 190%, 170% 170%, 190% 190%, 180% 180%, 100% 100%;
+  animation: movingMeshGradient 22s ease-in-out infinite alternate;
+  background-attachment: fixed;
+}
+
+.animate-orb-blue {
+  animation: floatOrbBlue 18s ease-in-out infinite;
+}
+
+.animate-orb-gold {
+  animation: floatOrbGold 20s ease-in-out infinite;
+}
+
+.animate-orb-white {
+  animation: floatOrbWhite 16s ease-in-out infinite;
+}
+
+/* Ambient Container Elevation Shadow */
+.stitch-card-shadow {
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.15);
+}
+
+/* Primary Button with Crystal Blue Blur Color - Subdued Soft Glow */
+.btn-crystal-blue {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(56, 189, 248, 0.22) 0%,
+    rgba(37, 99, 235, 0.36) 48%,
+    rgba(14, 165, 233, 0.22) 100%
+  ) !important;
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(125, 211, 252, 0.28) !important;
+  color: #FFFFFF !important;
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
+    0 2px 6px -1px rgba(56, 189, 248, 0.14),
+    0 0 5px 1px rgba(59, 130, 246, 0.08) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-crystal-blue:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(56, 189, 248, 0.3) 0%,
+    rgba(59, 130, 246, 0.46) 48%,
+    rgba(56, 189, 248, 0.26) 100%
+  ) !important;
+  border-color: rgba(224, 242, 254, 0.5) !important;
+  box-shadow: 
+    inset 0 1px 1.2px 0 rgba(255, 255, 255, 0.32),
+    0 3px 12px -1px rgba(56, 189, 248, 0.2),
+    0 0 8px 1px rgba(59, 130, 246, 0.12) !important;
+  transform: translateY(-1px);
+}
+
+.btn-crystal-blue:active {
+  transform: translateY(0.5px) scale(0.98);
+  box-shadow: 
+    inset 0 1.5px 3px rgba(0, 0, 0, 0.25),
+    0 1px 4px rgba(56, 189, 248, 0.1) !important;
+}
+
+/* Flowing Border Light for Active List Items - Soft, subdued, reduced brightness glowing border */
+@keyframes flowBorderLight {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.flowing-border-container {
+  position: relative;
+  border-radius: 0.75rem; /* 12px */
+  padding: 1.5px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #000000;
+  box-shadow: 
+    0 4px 20px 0 rgba(0, 0, 0, 0.4),
+    0 0 16px 2px rgba(56, 189, 248, 0.26),
+    0 0 28px 3px rgba(129, 140, 248, 0.16);
+}
+
+.flowing-border-container::before {
+  content: '';
+  position: absolute;
+  inset: -180%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 45deg,
+    rgba(56, 189, 248, 0.15) 90deg,
+    rgba(56, 189, 248, 0.75) 145deg,
+    rgba(255, 255, 255, 0.95) 185deg,
+    rgba(129, 140, 248, 0.75) 220deg,
+    rgba(56, 189, 248, 0.25) 265deg,
+    transparent 315deg,
+    transparent 360deg
+  );
+  animation: flowBorderLight 4.5s linear infinite;
+  filter: blur(6px);
+  opacity: 0.95;
+  z-index: 0;
+}
+
+.flowing-border-inner {
+  position: relative;
+  z-index: 1;
+  border-radius: calc(0.75rem - 1.5px);
+  width: 100%;
+  height: 100%;
+  background: #0B0E17 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Blurred Frosted Glass Background for Details card, Map Edit card, and Dialogs */
+.blurred-card-bg {
+  background: rgba(10, 13, 20, 0.82) !important;
+  backdrop-filter: blur(24px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+  border: 1px solid rgba(45, 49, 57, 0.85) !important;
+  box-shadow: 
+    0 16px 40px -8px rgba(0, 0, 0, 0.65),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Liquid Crystal Blur Glow for Components on Hover */
+.liquid-crystal-hover {
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: transparent !important;
+}
+
+.liquid-crystal-hover:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(56, 189, 248, 0.08) 0%,
+    rgba(99, 102, 241, 0.06) 40%,
+    rgba(168, 85, 247, 0.04) 70%,
+    rgba(56, 189, 248, 0.03) 100%
+  ), rgba(0, 0, 0, 0.2) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: rgba(96, 165, 250, 0.45) !important;
+  box-shadow: 
+    0 8px 24px -4px rgba(56, 189, 248, 0.16),
+    0 0 16px 1px rgba(99, 102, 241, 0.12),
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.1) !important;
+  transform: translateY(-1px);
+}
+
+.liquid-crystal-card {
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-crystal-card:hover {
+  border-color: rgba(96, 165, 250, 0.4) !important;
+  box-shadow: 
+    0 10px 25px -5px rgba(56, 189, 248, 0.12),
+    0 0 14px 1px rgba(129, 140, 248, 0.08),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
